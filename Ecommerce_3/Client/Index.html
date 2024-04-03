@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabella Prodotti</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container mt-5">
+    <h2>Tabella Prodotti</h2>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Marca</th>
+            <th>Prezzo</th>
+            <th>Azioni</th>
+        </tr>
+        </thead>
+        <tbody id="productTableBody">
+        <!-- Righe della tabella verranno inserite dinamicamente qui -->
+        </tbody>
+    </table>
+    <button type="button" class="btn btn-primary" onclick="openActionModal('Crea')">Crea</button>
+</div>
+
+<!-- Modale per Azioni -->
+<div class="modal fade" id="actionModal" tabindex="-1" role="dialog" aria-labelledby="actionModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="actionModalLabel"></h5>
+            </div>
+            <div class="modal-body">
+                <!-- Contenuto del form dinamico verrà inserito qui -->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Chiudi</button>
+                <button type="button" class="btn btn-primary" id="saveActionBtn">Salva</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="./JS/Script.js"></script>
+</body>
+</html>
