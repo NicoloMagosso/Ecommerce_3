@@ -8,6 +8,12 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="./JS/GetAll.js"></script>
+    <script src="JS/Delete.js"></script>
+    <script src="JS/Get.js"></script>
+    <script src="JS/Patch.js"></script>
+    <script src="JS/Post.js"></script>
+    <script src="JS/NewRow.js"></script>
 </head>
 <body>
 
@@ -27,27 +33,24 @@
         <!-- Righe della tabella verranno inserite dinamicamente qui -->
         </tbody>
     </table>
-    <button type="button" class="btn btn-primary" onclick="openActionModal('Crea')">Crea</button>
+    <button type="button" class="btn btn-primary" onclick="_post()">Crea</button>
 </div>
 
 <!-- Modale per Azioni -->
-<div class="modal fade" id="actionModal" tabindex="-1" role="dialog" aria-labelledby="actionModalLabel"
+<div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="actionModalLabel"
      aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="actionModalLabel"></h5>
+                <h5 class="modal-title" id="modalTitle"></h5>
             </div>
-            <div class="modal-body">
-                <!-- Contenuto del form dinamico verrà inserito qui -->
-            </div>
+            <div class="modal-body" id="modalBody"></div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Chiudi</button>
-                <button type="button" class="btn btn-primary" id="saveActionBtn">Salva</button>
+                <button type="button" class="btn btn-primary" id="saveBtn">Salva</button>
             </div>
         </div>
     </div>
 </div>
-<script src="./JS/Script.js"></script>
 </body>
 </html>

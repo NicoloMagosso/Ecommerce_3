@@ -2,6 +2,12 @@
 
 require '../Models/Product.php';
 
+$clientURL = $_SERVER['HTTP_ORIGIN'];
+if (isset($_SERVER['HTTP_ORIGIN'])) {
+    header("Access-Control-Allow-Origin: $clientURL");
+    header("Access-Control-Allow-Headers: Content-Type");
+    header("Access-Control-Allow-Methods: GET, POST, PATCH, DELETE");
+}
 
 $routes = ['GET' => [], 'POST' => [], 'PATCH' => [], 'DELETE' => []];
 
@@ -107,6 +113,27 @@ addRoute('GET', '/products', function () {
     $response = ['data' => $data];
 
     echo json_encode($response, JSON_PRETTY_PRINT);
+});
+
+addRoute('OPTIONS', '/products', function () {
+    // Invia le intestazioni CORS appropriate
+    global $clientURL;
+    header("Access-Control-Allow-Origin: $clientURL");
+    header("Access-Control-Allow-Headers: Content-Type, X-Requested-With");
+    header("Access-Control-Allow-Methods:  GET,POST");
+    header("Content-Length: 0");
+    http_response_code(200);
+    exit();
+});
+addRoute('OPTIONS', '/products/(\d+)', function () {
+    // Invia le intestazioni CORS appropriate
+    global $clientURL;
+    header("Access-Control-Allow-Origin: $clientURL");
+    header("Access-Control-Allow-Headers: Content-Type, X-Requested-With");
+    header("Access-Control-Allow-Methods: GET, PATCH, DELETE");
+    header("Content-Length: 0");
+    http_response_code(200);
+    exit();
 });
 
 addRoute('POST', '/products', function () {
