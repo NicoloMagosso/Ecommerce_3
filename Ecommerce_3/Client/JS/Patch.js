@@ -34,51 +34,56 @@ function _patch(productId) {
                 const updatedName = document.getElementById("productName").value;
                 const updatedBrand = document.getElementById("productBrand").value;
                 const updatedPrice = document.getElementById("productPrice").value;
-
-                const updatedProduct = {
-                    data: {
-                        type: 'products',
-                        id: product.id,
-                        attributes: {
-                            nome: updatedName,
-                            marca: updatedBrand,
-                            prezzo: parseFloat(updatedPrice)
+                if (updatedName && updatedPrice) {
+                    const updatedProduct = {
+                        data: {
+                            type: 'products',
+                            id: product.id,
+                            attributes: {
+                                nome: updatedName,
+                                marca: updatedBrand,
+                                prezzo: parseFloat(updatedPrice)
+                            }
                         }
-                    }
-                };
+                    };
 
-                // Effettua la richiesta PATCH al server per aggiornare il prodotto
-                fetch(URL, {
-                    method: 'PATCH',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(updatedProduct)
-                })
-                    .then(response => {
-                        if (!response.ok) {
-                            throw new Error("Errore durante la modifica del prodotto.");
-                        }
-                        return response.json();
+                    // Effettua la richiesta PATCH al server per aggiornare il prodotto
+                    fetch(URL, {
+                        method: 'PATCH',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(updatedProduct)
                     })
-                    .then(data => {
-                        // Aggiorna la tabella o le informazioni del prodotto
-                        // Potresti anche chiudere il modal o fare altre azioni necessarie
-                        alert("Prodotto modificato con successo.");
-                        // Chiudi il modal dopo aver modificato il prodotto
-                        $('#modal').modal('hide');
+                        .then(response => {
+                            if (!response.ok) {
+                                throw new Error("Errore durante la modifica del prodotto.");
+                            }
+                            return response.json();
+                        })
+                        .then(data => {
+                            // Aggiorna la tabella o le informazioni del prodotto
+                            // Potresti anche chiudere il modal o fare altre azioni necessarie
+                            alert("Prodotto modificato con successo.");
+                            // Chiudi il modal dopo aver modificato il prodotto
+                            $('#modal').modal('hide');
 
-                        // Aggiungi la nuova riga nella tabella
-                        const tableBody = document.getElementById("productTableBody");
-                        const newRow = createProductRow(data.data);
-                        const oldRow = document.getElementById("row_" + data.data.id);
-                        tableBody.replaceChild(newRow, oldRow);
-                    })
-                    .catch(error => {
-                        console.error('Errore:', error);
-                        alert("Si è verificato un errore durante la modifica del prodotto.");
-                    });
-            };
+                            // Aggiungi la nuova riga nella tabella
+                            const tableBody = document.getElementById("productTableBody");
+                            const newRow = createProductRow(data.data);
+                            const oldRow = document.getElementById("row_" + data.data.id);
+                            tableBody.replaceChild(newRow, oldRow);
+                        })
+                        .catch(error => {
+                            console.error('Errore:', error);
+                            alert("Si è verificato un errore durante la modifica del prodotto.");
+                        });
+                }else
+                {
+                    alert("Campi non inseriti correttamente. Riprovare");
+                }
+
+            }
             $(modal).modal('show');
         })
         .catch(error => {
