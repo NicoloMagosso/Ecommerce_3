@@ -11,30 +11,12 @@ function _patch(productId) {
         })
         .then(data => {
             const product = data.data;
-
-            // Popolare il form modale con i dati del prodotto
-            modalTitle.textContent = "Modifica Prodotto";
-            modalBody.innerHTML = `
-                <div class="form-group">
-                    <label for="productName">Nome:</label>
-                    <input type="text" class="form-control" id="productName" value="${product.attributes.nome}">
-                </div>
-                <div class="form-group">
-                    <label for="productBrand">Marca:</label>
-                    <input type="text" class="form-control" id="productBrand" value="${product.attributes.marca}">
-                </div>
-                <div class="form-group">
-                    <label for="productPrice">Prezzo:</label>
-                    <input type="number" class="form-control" id="productPrice" value="${product.attributes.prezzo}">
-                </div>
-            `;
-            // Cambia il testo e l'evento del pulsante di salvataggio
-            saveBtn.style.display = "block";
+            _manageModal('patch', product);
             saveBtn.onclick = function () {
                 const updatedName = document.getElementById("productName").value;
                 const updatedBrand = document.getElementById("productBrand").value;
                 const updatedPrice = document.getElementById("productPrice").value;
-                if (updatedName && updatedPrice) {
+                if (updatedName && updatedBrand) {
                     const updatedProduct = {
                         data: {
                             type: 'products',

@@ -12,14 +12,7 @@ function _get(productId) {
         })
         .then(data => {
             const product = data.data;
-            // Popolare il form modale con i dati del prodotto
-            modalTitle.textContent = "Visualizza Prodotto";
-            modalBody.innerHTML = "<p>ID: " + product.id + "</p>" +
-                "<p>Nome: " + product.attributes.nome + "</p>" +
-                "<p>Marca: " + product.attributes.marca + "</p>" +
-                "<p>Prezzo: " + product.attributes.prezzo + "</p>";
-            saveBtn.style.display = "none";
-            $(modal).modal('show');
+            _manageModal('get', product);
         })
         .catch(error => {
             console.error('Errore:', error);

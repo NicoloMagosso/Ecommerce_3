@@ -1,21 +1,6 @@
 function _post() {
     // Creazione di un nuovo prodotto tramite un form modale
-    modalTitle.textContent = "Prodotto";
-    modalBody.innerHTML = `
-        <div class="form-group">
-            <label for="productName">Nome:</label>
-            <input type="text" class="form-control" id="productName">
-        </div>
-        <div class="form-group">
-            <label for="productBrand">Marca:</label>
-            <input type="text" class="form-control" id="productBrand">
-        </div>
-        <div class="form-group">
-            <label for="productPrice">Prezzo:</label>
-            <input type="number" class="form-control" id="productPrice">
-        </div>
-    `;
-
+    _manageModal('post');
     saveBtn.onclick = function () {
         const Nome = document.getElementById("productName").value;
         const Marca = document.getElementById("productBrand").value;
