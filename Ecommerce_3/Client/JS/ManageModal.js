@@ -21,7 +21,7 @@ function _manageModal(action, data = null) {
                 </div>
                 <div class="form-group">
                     <label for="productPrice">Prezzo:</label>
-                    <input type="number" class="form-control" id="productPrice">
+                    <input type="number" class="form-control" id="productPrice" min="0">
                 </div>
             `;
             saveBtn.style.display = "block";
@@ -38,7 +38,7 @@ function _manageModal(action, data = null) {
                 </div>
                 <div class="form-group">
                     <label for="productPrice">Prezzo:</label>
-                    <input type="number" class="form-control" id="productPrice" value="${data.attributes.prezzo}">
+                    <input type="number" class="form-control" id="productPrice" value="${data.attributes.prezzo}" min="0">
                 </div>
             `;
             saveBtn.style.display = "block";

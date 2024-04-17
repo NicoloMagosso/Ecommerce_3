@@ -44,9 +44,6 @@ function _patch(productId) {
                             return response.json();
                         })
                         .then(data => {
-                            // Aggiorna la tabella o le informazioni del prodotto
-                            // Potresti anche chiudere il modal o fare altre azioni necessarie
-                            alert("Prodotto modificato con successo.");
                             // Chiudi il modal dopo aver modificato il prodotto
                             $('#modal').modal('hide');
 
